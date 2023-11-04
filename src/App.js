@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Usuarios from "./Usuarios.js";
+import Snaps from "./Snaps.js";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [page, setPage] = useState("users");
+    return (
+        <div className="App">
+            <header className="App-header">
+                <ul>
+                    <li
+                        onClick={() => {
+                            setPage("snaps");
+                        }}
+                    >
+                        Snaps
+                    </li>
+                    <li
+                        onClick={() => {
+                            setPage("users");
+                        }}
+                    >
+                        Usuarios
+                    </li>
+                </ul>
+            </header>
+            <main>
+                {page == "snaps" && <Snaps />}
+                {page == "users" && <Usuarios />}
+            </main>
+        </div>
+    );
 }
 
 export default App;
