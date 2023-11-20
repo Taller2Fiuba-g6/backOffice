@@ -15,6 +15,10 @@ ol {
     list-style-type: none;
 }
 
+img {
+    width: 100%;
+}
+
 .header {
     background-color: #282c34;
     min-height: 10vh;
@@ -41,7 +45,7 @@ ol {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    height: 400px;
+    height: 600px;
 }
 
 .div_boton {
@@ -49,7 +53,14 @@ ol {
 }
 
 .boton {
+    background-color: #282c34;
+    color: white;
     width: 70%;
+    border: none;
+}
+
+.boton:hover {
+    background-color: red;
 }
 
 .menu_item {
@@ -72,8 +83,7 @@ ol {
 .usuario {
     display: flex;
     flex-direction: row;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px 8px;
     align-items: center;
 }
 
@@ -81,13 +91,17 @@ ol {
     background-color: lightgray;
 }
 
+.usuario_admin {
+    width: 10%;
+}
+
 .usuario_username {
-    width: 25%;
+    width: 20%;
     text-align: left;
 }
 
 .usuario_description {
-    width: 30%;
+    width: 25%;
     text-align: left;
 }
 
@@ -105,13 +119,16 @@ ol {
 .snap {
     display: flex;
     flex-direction: row;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px 8px;
     align-items: center;
 }
 
 .snap:nth-child(even) {
     background-color: lightgray;
+}
+
+.seleccionado {
+    font-weight: bold;
 }
 
 .snap_datetime {
@@ -125,6 +142,7 @@ ol {
 }
 
 .snap_msgtext {
+    font-weight: normal;
     width: 37%;
     text-align: left;
 }
@@ -135,6 +153,44 @@ ol {
     color: red;
 }
 
-.detalle_snap_img {
-    width: 400px;
+.detalle_user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+}
+
+.detalle_user_picture {
+    width: 360px;
+    border: solid;
+    border-width: 1px;
+    border-color: grey;
+}
+
+/* ==========     DETALLE SNAPS     ========== */
+.detalle_snap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+}
+
+.detalle_snap_texto {
+    width: 360px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: grey;
+    font-size: 20px;
+    overflow-y: scroll;
+}
+
+.detalle_snap_picture {
+    width: 360px;
+    height: 240px;
+    border: solid;
+    border-width: 1px;
+    border-color: grey;
 }

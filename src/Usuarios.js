@@ -1,9 +1,11 @@
 import Usuario from "./Usuario";
 import { useEffect, useState } from "react";
+import DetalleUser from "./DetalleUser";
 
 const Usuarios = () => {
     const [users, setUsers] = useState([]);
     const [token, setToken] = useState();
+    const [selectedUser, setSelectedUser] = useState();
 
     useEffect(() => {
         login();
@@ -60,9 +62,18 @@ const Usuarios = () => {
         <main className="usuarios_main">
             <section className="listado">
                 {users.map((user) => {
-                    return <Usuario key={user.uid} {...user} />;
+                    return (
+                        <Usuario
+                            key={user.uid}
+                            user={user}
+                            token={token}
+                            selectedUser={selectedUser}
+                            setSelectedUser={setSelectedUser}
+                        />
+                    );
                 })}
             </section>
+            <DetalleUser selectedUser={selectedUser} />
         </main>
     );
 };

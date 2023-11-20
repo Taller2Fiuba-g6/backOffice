@@ -4,7 +4,7 @@ import Usuarios from "./Usuarios.js";
 import Snaps from "./Snaps.js";
 
 function App() {
-    const [page, setPage] = useState("users");
+    const [page, setPage] = useState("snaps");
     return (
         <div className="App">
             <header className="header">
@@ -29,8 +29,8 @@ function App() {
                 </ul>
             </header>
             <main>
-                {page == "snaps" && <Snaps />}
-                {page == "users" && <Usuarios />}
+                {page === "snaps" && <Snaps />}
+                {page === "users" && <Usuarios />}
             </main>
         </div>
     );

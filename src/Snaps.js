@@ -53,7 +53,6 @@ const Snaps = () => {
         try {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
-            console.log(data);
             setSnaps(data.messages);
         } catch (error) {
             console.log(error);
@@ -64,12 +63,18 @@ const Snaps = () => {
         <main className="snaps_main">
             <section className="listado">
                 {snaps.map((snap) => {
-                    return <Snap snap={snap} token={token} setSelectedSnap={setSelectedSnap} />;
+                    return (
+                        <Snap
+                            key={snap.msgID}
+                            snap={snap}
+                            token={token}
+                            selectedSnap={selectedSnap}
+                            setSelectedSnap={setSelectedSnap}
+                        />
+                    );
                 })}
             </section>
-            <section>
-                <DetalleSnap selectedSnap={selectedSnap} />
-            </section>
+            <DetalleSnap selectedSnap={selectedSnap} />
         </main>
     );
 };
