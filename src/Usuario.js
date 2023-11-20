@@ -1,13 +1,16 @@
 import { useState } from "react";
 
 const Usuario = ({ user, token, selectedUser, setSelectedUser }) => {
-    console.log(user);
     const [isAdmin, setIsAdmin] = useState(user.is_admin);
+    const [blocked, setBlocked] = useState(false);
+
     const onSelect = () => {
         setSelectedUser(user);
     };
 
-    const bloquear = () => {};
+    const bloquear = () => {
+        setBlocked(!blocked);
+    };
 
     const setAdmin = () => {
         setIsAdmin(!isAdmin);
@@ -18,6 +21,22 @@ const Usuario = ({ user, token, selectedUser, setSelectedUser }) => {
             return <input onChange={setAdmin} id={user.uid} type="checkbox" defaultChecked />;
         } else {
             return <input onChange={setAdmin} id={user.uid} type="checkbox" />;
+        }
+    };
+
+    const BotonBloqueo = () => {
+        if (blocked) {
+            return (
+                <button className="boton bloqueado" onClick={bloquear}>
+                    Desbloquear
+                </button>
+            );
+        } else {
+            return (
+                <button className="boton" onClick={bloquear}>
+                    Bloquear
+                </button>
+            );
         }
     };
 
@@ -35,9 +54,7 @@ const Usuario = ({ user, token, selectedUser, setSelectedUser }) => {
                 </button>
             </div>
             <div className="div_boton">
-                <button className="boton" onClick={bloquear}>
-                    Bloquear
-                </button>
+                <BotonBloqueo />
             </div>
         </div>
     );

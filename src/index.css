@@ -55,8 +55,12 @@ img {
 .boton {
     background-color: #282c34;
     color: white;
-    width: 70%;
+    width: 80%;
     border: none;
+}
+
+.bloqueado {
+    color: yellow;
 }
 
 .boton:hover {

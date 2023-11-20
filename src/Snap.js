@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
+    const [blocked, setBlocked] = useState(snap.blocked);
+
     const bloquear = async () => {
         try {
             const url = "/admin/snaps/" + snap.msgID;
@@ -11,7 +15,7 @@ const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
                 },
             });
             const status = response.status;
-            console.log(status);
+            setBlocked(!blocked);
         } catch (error) {
             console.error(error);
         }
@@ -28,6 +32,22 @@ const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
         }
     }
 
+    const BotonBloqueo = () => {
+        if (blocked) {
+            return (
+                <button className="boton bloqueado" onClick={bloquear}>
+                    Desbloquear
+                </button>
+            );
+        } else {
+            return (
+                <button className="boton" onClick={bloquear}>
+                    Bloquear
+                </button>
+            );
+        }
+    };
+
     return (
         <div className={clase}>
             <div className="snap_datetime">{snap.dateTime}</div>
@@ -40,9 +60,7 @@ const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
                 </button>
             </div>
             <div className="div_boton">
-                <button className="boton" onClick={bloquear}>
-                    Bloquear
-                </button>
+                <BotonBloqueo />
             </div>
         </div>
     );
