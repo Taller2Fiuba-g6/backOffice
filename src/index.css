@@ -132,6 +132,9 @@ img {
 }
 
 .seleccionado {
+    border-style: solid;
+    border-width: 1px;
+    color: blue;
     font-weight: bold;
 }
 
@@ -146,6 +149,7 @@ img {
 }
 
 .snap_msgtext {
+    color: black;
     font-weight: normal;
     width: 37%;
     text-align: left;

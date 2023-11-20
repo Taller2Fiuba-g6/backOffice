@@ -40,8 +40,15 @@ const Usuario = ({ user, token, selectedUser, setSelectedUser }) => {
         }
     };
 
+    let clase = "usuario";
+    if (typeof selectedUser !== "undefined") {
+        if (user.uid === selectedUser.uid) {
+            clase = "usuario seleccionado";
+        }
+    }
+
     return (
-        <div className="usuario">
+        <div className={clase}>
             <div className="usuario_admin">
                 <AdminBox />
             </div>
