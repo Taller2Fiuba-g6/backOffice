@@ -57,11 +57,13 @@ const Usuarios = () => {
     };
 
     return (
-        <>
-            {users.map((user) => {
-                return <Usuario key={user.uid} {...user} />;
-            })}
-        </>
+        <main className="usuarios_main">
+            <section className="listado">
+                {users.map((user) => {
+                    return <Usuario key={user.uid} {...user} />;
+                })}
+            </section>
+        </main>
     );
 };
 

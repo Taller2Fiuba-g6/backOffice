@@ -1,24 +1,140 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+.header {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.logo {
+    font-family: "Kodchasan", sans-serif;
+    color: red;
+    font-size: 48px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.listado {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.div_boton {
+    width: 10%;
+}
+
+.boton {
+    width: 70%;
+}
+
+.menu_item {
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    font-size: 20px;
+    padding: 8px 16px;
+}
+
+.menu_item:hover {
+    background-color: red;
+}
+
+/* ==========     USUARIO     ========== */
+.usuarios_main {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
 }
 
 .usuario {
     display: flex;
-    background-color: lightBlue;
-    border: inset;
+    flex-direction: row;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    align-items: center;
 }
 
-.xxx {
-    width: 400px;
+.usuario:nth-child(even) {
+    background-color: lightgray;
+}
+
+.usuario_username {
+    width: 25%;
     text-align: left;
+}
+
+.usuario_description {
+    width: 30%;
+    text-align: left;
+}
+
+.usuario_location {
+    width: 25%;
+    text-align: left;
+}
+
+/* ==========     SNAPS     ========== */
+.snaps_main {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.snap {
+    display: flex;
+    flex-direction: row;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    align-items: center;
+}
+
+.snap:nth-child(even) {
+    background-color: lightgray;
+}
+
+.snap_datetime {
+    width: 18%;
+    text-align: left;
+}
+
+.snap_username {
+    width: 20%;
+    text-align: left;
+}
+
+.snap_msgtext {
+    width: 37%;
+    text-align: left;
+}
+
+.snap_lbl_img {
+    width: 5%;
+    font-weight: bold;
+    color: red;
+}
+
+.detalle_snap_img {
+    width: 400px;
 }

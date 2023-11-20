@@ -1,9 +1,11 @@
 import Snap from "./Snap";
+import DetalleSnap from "./DetalleSnap";
 import { useEffect, useState } from "react";
 
 const Snaps = () => {
     const [snaps, setSnaps] = useState([]);
     const [token, setToken] = useState();
+    const [selectedSnap, setSelectedSnap] = useState();
 
     useEffect(() => {
         login();
@@ -12,6 +14,8 @@ const Snaps = () => {
     useEffect(() => {
         token && getSnaps();
     }, [token]);
+
+    // useEffect(() => {}, [selectedSnap]);
 
     const login = async () => {
         const url =
@@ -37,8 +41,7 @@ const Snaps = () => {
     };
 
     const getSnaps = async () => {
-        const url = "/snaps?pageNumber=0&pageCount=50";
-        // const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/snaps";
+        const url = "/admin/snaps?pageNumber=0&pageCount=200";
         const requestOptions = {
             // mode: "no-cors",
             method: "GET",
@@ -58,11 +61,16 @@ const Snaps = () => {
     };
 
     return (
-        <>
-            {snaps.map((snap) => {
-                return <Snap key={snap.msgID} {...snap} />;
-            })}
-        </>
+        <main className="snaps_main">
+            <section className="listado">
+                {snaps.map((snap) => {
+                    return <Snap snap={snap} token={token} setSelectedSnap={setSelectedSnap} />;
+                })}
+            </section>
+            <section>
+                <DetalleSnap selectedSnap={selectedSnap} />
+            </section>
+        </main>
     );
 };
 
