@@ -8,7 +8,7 @@ const Snap = ({ snap, selectedSnap, setSelectedSnap }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             const url = "/admin/snaps/" + snap.msgID;
-            const response = await fetch(url, {
+            await fetch(url, {
                 method: "DELETE",
                 headers: {
                     Accept: "application/json",

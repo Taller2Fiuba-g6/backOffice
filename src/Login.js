@@ -58,9 +58,13 @@ const Login = ({ setLogged }) => {
                 setErrorMessage("Usuario/Password No Válido");
             } else if (response.ok) {
                 const json = await response.json();
-                console.log(json);
-                //TODO: agregar chequeo de respuesta !!!!!!!!!
-                setLogged(true);
+                console.log(json.is_admin);
+                if (json.is_admin) {
+                    setLogged(true);
+                } else {
+                    // setLogged(true);
+                    setErrorMessage("Usuario/Password No Válido");
+                }
             } else {
                 setErrorMessage("Server Error/Status: " + response.status);
             }
