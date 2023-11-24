@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { auth } from "../firebaseConfig";
 
-const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
+const Snap = ({ snap, selectedSnap, setSelectedSnap }) => {
     const [blocked, setBlocked] = useState(snap.blocked);
 
     const bloquear = async () => {
         try {
+            const token = await auth.currentUser.getIdToken();
             const url = "/admin/snaps/" + snap.msgID;
             const response = await fetch(url, {
                 method: "DELETE",
@@ -14,7 +16,6 @@ const Snap = ({ snap, token, selectedSnap, setSelectedSnap }) => {
                     Authorization: token,
                 },
             });
-            const status = response.status;
             setBlocked(!blocked);
         } catch (error) {
             console.error(error);

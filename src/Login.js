@@ -34,25 +34,46 @@ const Login = ({ setLogged }) => {
     };
 
     const handleLogin = () => {
-        // setIsLoading(true);
         signInWithEmailAndPassword(auth, user.current.value, password.current.value)
             .then(() => {
                 // console.log("uid:", auth.currentUser.uid);
                 // console.log("email:", auth.currentUser.email);
                 // console.log("AccessToken:", auth.currentUser.stsTokenManager.accessToken);
-                setLogged(true);
+                loginAPI();
             })
             .catch((error) => {
-                // setIsLoading(false);
                 showFirebaseError(error);
             });
-        // setIsLoading(false);
+    };
+
+    const loginAPI = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const headers = { Authorization: token };
+            // const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/login";
+            const url = "/login";
+            const response = await fetch(url, { headers });
+            // console.log("loginAPI: ", response.status);
+            if (response.status === 404) {
+                setErrorMessage("Usuario/Password No Válido");
+            } else if (response.ok) {
+                const json = await response.json();
+                console.log(json);
+                //TODO: agregar chequeo de respuesta !!!!!!!!!
+                setLogged(true);
+            } else {
+                setErrorMessage("Server Error/Status: " + response.status);
+            }
+        } catch (error) {
+            if (error.message === "Network request failed") setErrorMessage("Error de Red. Falló el requerimiento.");
+            else setErrorMessage(error.message);
+        }
     };
 
     return (
         <main className="login">
             <div>
-                Usuario:
+                E-mail:
                 <input ref={user} />
             </div>
             <div>

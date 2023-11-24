@@ -1,46 +1,18 @@
 import Snap from "./Snap";
 import DetalleSnap from "./DetalleSnap";
 import { useEffect, useState } from "react";
+import { auth } from "../firebaseConfig";
 
 const Snaps = () => {
     const [snaps, setSnaps] = useState([]);
-    const [token, setToken] = useState();
     const [selectedSnap, setSelectedSnap] = useState();
 
     useEffect(() => {
-        login();
+        getSnaps();
     }, []);
 
-    useEffect(() => {
-        token && getSnaps();
-    }, [token]);
-
-    // useEffect(() => {}, [selectedSnap]);
-
-    const login = async () => {
-        const url =
-            "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAJHVj9xf0L8b0Ub0gBP34t5fhdFYk5uRs";
-        const requestOptions = {
-            method: "POST",
-            body: JSON.stringify({
-                email: "hhuzan@gmail.com",
-                password: "fiuba2023",
-                returnSecureToken: true,
-            }),
-            headers: {
-                accept: "application/json",
-            },
-        };
-        try {
-            const response = await fetch(url, requestOptions);
-            const data = await response.json();
-            setToken(data.idToken);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     const getSnaps = async () => {
+        const token = await auth.currentUser.getIdToken();
         const url = "/admin/snaps?pageNumber=0&pageCount=200";
         const requestOptions = {
             // mode: "no-cors",
@@ -63,15 +35,7 @@ const Snaps = () => {
         <main className="snaps_main">
             <section className="listado">
                 {snaps.map((snap) => {
-                    return (
-                        <Snap
-                            key={snap.msgID}
-                            snap={snap}
-                            token={token}
-                            selectedSnap={selectedSnap}
-                            setSelectedSnap={setSelectedSnap}
-                        />
-                    );
+                    return <Snap key={snap.msgID} snap={snap} selectedSnap={selectedSnap} setSelectedSnap={setSelectedSnap} />;
                 })}
             </section>
             <DetalleSnap selectedSnap={selectedSnap} />

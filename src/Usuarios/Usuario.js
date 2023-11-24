@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Usuario = ({ user, token, selectedUser, setSelectedUser }) => {
+const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const [isAdmin, setIsAdmin] = useState(user.is_admin);
     const [blocked, setBlocked] = useState(false);
 

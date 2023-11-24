@@ -4,6 +4,7 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: lightgrey;
 }
 
 code {
@@ -92,7 +93,7 @@ img {
 }
 
 .usuario:nth-child(even) {
-    background-color: lightgray;
+    background-color: white;
 }
 
 .usuario_admin {
@@ -128,7 +129,7 @@ img {
 }
 
 .snap:nth-child(even) {
-    background-color: lightgray;
+    background-color: white;
 }
 
 .seleccionado {
@@ -194,6 +195,7 @@ img {
     border-color: grey;
     font-size: 20px;
     overflow-y: scroll;
+    background-color: white;
 }
 
 .detalle_snap_picture {
@@ -211,6 +213,8 @@ img {
     padding: 64px;
     gap: 24px;
     align-items: center;
+    background-color: grey;
+    font-weight: bold;
 }
 
 .login_error {
