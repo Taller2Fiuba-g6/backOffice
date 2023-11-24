@@ -203,3 +203,18 @@ img {
     border-width: 1px;
     border-color: grey;
 }
+
+/* ==========     DETALLE SNAPS     ========== */
+.login {
+    display: flex;
+    flex-direction: column;
+    padding: 64px;
+    gap: 24px;
+    align-items: center;
+}
+
+.login_error {
+    color: red;
+    font-size: larger;
+    font-weight: bold;
+}
