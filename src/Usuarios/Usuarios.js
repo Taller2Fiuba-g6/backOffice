@@ -13,8 +13,8 @@ const Usuarios = () => {
 
     const getUsers = async () => {
         const token = await auth.currentUser.getIdToken();
-        const url = "/users";
-        // const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/users";
+        const url = "/admin/users";
+        // const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users";
         const requestOptions = {
             // mode: "no-cors",
             method: "GET",

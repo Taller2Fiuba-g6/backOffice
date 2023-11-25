@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { auth } from "../firebaseConfig";
 
 const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const [isAdmin, setIsAdmin] = useState(user.is_admin);
@@ -12,13 +13,51 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         setBlocked(!blocked);
     };
 
-    const setAdmin = () => {
-        setIsAdmin(!isAdmin);
+    const setAdmin = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "/admin/users/" + user.uid;
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            console.log(response.status);
+            if (response.ok) {
+                setIsAdmin(true);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const unsetAdmin = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "/admin/users/" + user.uid;
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            console.log(response.status);
+            if (response.ok) {
+                setIsAdmin(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const AdminBox = () => {
         if (isAdmin) {
-            return <input onChange={setAdmin} id={user.uid} type="checkbox" defaultChecked />;
+            return <input onChange={unsetAdmin} id={user.uid} type="checkbox" defaultChecked />;
         } else {
             return <input onChange={setAdmin} id={user.uid} type="checkbox" />;
         }

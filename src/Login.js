@@ -58,7 +58,6 @@ const Login = ({ setLogged }) => {
                 setErrorMessage("Usuario/Password No Válido");
             } else if (response.ok) {
                 const json = await response.json();
-                console.log(json.is_admin);
                 if (json.is_admin) {
                     setLogged(true);
                 } else {
