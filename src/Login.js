@@ -75,18 +75,23 @@ const Login = ({ setLogged }) => {
     };
 
     return (
-        <main className="login">
-            <div>
-                E-mail:
-                <input ref={user} />
-            </div>
-            <div>
-                Password:
-                <input ref={password} />
-            </div>
-            <button onClick={handleLogin}>Login</button>
-            <p className="login_error">{errorMessage}</p>
-        </main>
+        <>
+            <header className="header">
+                <div className="logo">SnapMsg</div>
+            </header>
+            <main className="login">
+                <div className="login_field">
+                    E-mail:
+                    <input ref={user} />
+                </div>
+                <div className="login_field">
+                    Password:
+                    <input type="password" ref={password} />
+                </div>
+                <button onClick={handleLogin}>Login</button>
+                <p className="login_error">{errorMessage}</p>
+            </main>
+        </>
     );
 };
 
