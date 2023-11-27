@@ -3,17 +3,35 @@ import { auth } from "../firebaseConfig";
 
 const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const [isAdmin, setIsAdmin] = useState(user.is_admin);
-    const [blocked, setBlocked] = useState(false);
+    const [blocked, setBlocked] = useState(user.is_blocked);
 
     const handleSelect = () => {
         setSelectedUser(user);
     };
 
-    const bloquear = () => {
-        setBlocked(!blocked);
+    const setAdmin = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "/admin/" + user.uid;
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            console.log(response.status);
+            if (response.ok) {
+                setIsAdmin(true);
+                setSelectedUser(user);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    const setAdmin = async () => {
+    const bloquear = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
             const url = "/admin/users/" + user.uid;
@@ -27,7 +45,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
             });
             console.log(response.status);
             if (response.ok) {
-                setIsAdmin(true);
+                setBlocked(true);
+                setSelectedUser(user);
             }
         } catch (error) {
             console.error(error);
@@ -35,6 +54,28 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     };
 
     const unsetAdmin = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "/admin/" + user.uid;
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            console.log(response.status);
+            if (response.ok) {
+                setIsAdmin(false);
+                setSelectedUser(user);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const desBloquear = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
             const url = "/admin/users/" + user.uid;
@@ -48,7 +89,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
             });
             console.log(response.status);
             if (response.ok) {
-                setIsAdmin(false);
+                setBlocked(false);
+                setSelectedUser(user);
             }
         } catch (error) {
             console.error(error);
@@ -66,7 +108,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const BotonBloqueo = () => {
         if (blocked) {
             return (
-                <button className="boton bloqueado" onClick={bloquear}>
+                <button className="boton bloqueado" onClick={desBloquear}>
                     Desbloquear
                 </button>
             );
@@ -87,13 +129,19 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     }
 
     return (
-        <div onClick={handleSelect} className={clase}>
+        <div className={clase}>
             <div className="usuario_admin">
                 <AdminBox />
             </div>
-            <div className="usuario_username">{user.username}</div>
-            <div className="usuario_description">{user.profile_description}</div>
-            <div className="usuario_location">{user.location}</div>
+            <div onClick={handleSelect} className="usuario_username">
+                {user.username}
+            </div>
+            <div onClick={handleSelect} className="usuario_description">
+                {user.profile_description}
+            </div>
+            <div onClick={handleSelect} className="usuario_location">
+                {user.location}
+            </div>
             <div className="div_boton">
                 <BotonBloqueo />
             </div>

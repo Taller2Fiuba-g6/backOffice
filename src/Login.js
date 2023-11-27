@@ -49,10 +49,17 @@ const Login = ({ setLogged }) => {
     const loginAPI = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const headers = { Authorization: token };
-            // const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/login";
-            const url = "/login";
-            const response = await fetch(url, { headers });
+            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/login";
+            // const url = "/login";
+            const requestOptions = {
+                mode: "no-cors",
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                    accept: "application/json",
+                },
+            };
+            const response = await fetch(url, requestOptions);
             // console.log("loginAPI: ", response.status);
             if (response.status === 404) {
                 setErrorMessage("Usuario/Password No Válido");
