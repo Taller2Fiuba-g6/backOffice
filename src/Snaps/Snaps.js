@@ -13,9 +13,9 @@ const Snaps = () => {
 
     const getSnaps = async () => {
         const token = await auth.currentUser.getIdToken();
-        const url = "/admin/snaps?pageNumber=0&pageCount=200";
+        // const url = "/admin/snaps?pageNumber=0&pageCount=200";
+        const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/snaps?pageNumber=0&pageCount=200";
         const requestOptions = {
-            // mode: "no-cors",
             method: "GET",
             headers: {
                 Authorization: token,

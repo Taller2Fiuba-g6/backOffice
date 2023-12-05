@@ -35,6 +35,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "proxy": "https://snap-middle-end-qjub62maia-ue.a.run.app"
+    }
 }
