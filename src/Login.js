@@ -52,7 +52,7 @@ const Login = ({ setLogged }) => {
             const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/login";
             // const url = "/login";
             const requestOptions = {
-                mode: "no-cors",
+                // mode: "no-cors",
                 method: "GET",
                 headers: {
                     Authorization: token,

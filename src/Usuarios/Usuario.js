@@ -12,7 +12,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const setAdmin = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const url = "/admin/" + user.uid;
+            // const url = "/admin/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -21,7 +22,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
                     Authorization: token,
                 },
             });
-            console.log(response.status);
             if (response.ok) {
                 setIsAdmin(true);
                 setSelectedUser(user);
@@ -34,7 +34,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const bloquear = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const url = "/admin/users/" + user.uid;
+            // const url = "/admin/users/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -43,7 +44,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
                     Authorization: token,
                 },
             });
-            console.log(response.status);
             if (response.ok) {
                 setBlocked(true);
                 setSelectedUser(user);
@@ -56,7 +56,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const unsetAdmin = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const url = "/admin/" + user.uid;
+            // const url = "/admin/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/" + user.uid;
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -65,7 +66,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
                     Authorization: token,
                 },
             });
-            console.log(response.status);
             if (response.ok) {
                 setIsAdmin(false);
                 setSelectedUser(user);
@@ -78,7 +78,8 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const desBloquear = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const url = "/admin/users/" + user.uid;
+            // const url = "/admin/users/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users/" + user.uid;
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -87,7 +88,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
                     Authorization: token,
                 },
             });
-            console.log(response.status);
             if (response.ok) {
                 setBlocked(false);
                 setSelectedUser(user);
