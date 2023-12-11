@@ -8,7 +8,7 @@ const Snap = ({ snap, selectedSnap, setSelectedSnap }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             // const url = "/admin/snaps/" + snap.msgID;
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/snaps/" + snap.msgID;
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/snaps/" + snap.msgID;
             await fetch(url, {
                 method: "DELETE",
                 headers: {

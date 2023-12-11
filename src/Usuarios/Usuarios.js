@@ -14,7 +14,7 @@ const Usuarios = () => {
     const getUsers = async () => {
         const token = await auth.currentUser.getIdToken();
         // const url = "/admin/users";
-        const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users";
         const requestOptions = {
             method: "GET",
             headers: {

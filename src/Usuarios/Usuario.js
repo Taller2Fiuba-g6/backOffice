@@ -13,7 +13,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             // const url = "/admin/" + user.uid;
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -35,7 +35,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             // const url = "/admin/users/" + user.uid;
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -57,7 +57,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             // const url = "/admin/" + user.uid;
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/" + user.uid;
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {
@@ -79,7 +79,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         try {
             const token = await auth.currentUser.getIdToken();
             // const url = "/admin/users/" + user.uid;
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/admin/users/" + user.uid;
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users/" + user.uid;
             const response = await fetch(url, {
                 method: "DELETE",
                 headers: {

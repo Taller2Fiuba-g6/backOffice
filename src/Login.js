@@ -49,15 +49,18 @@ const Login = ({ setLogged }) => {
     const loginAPI = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const url = "https://snap-middle-end-qjub62maia-ue.a.run.app/login";
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/login";
             // const url = "/login";
             const requestOptions = {
-                // mode: "no-cors",
-                method: "GET",
+                method: "PATCH",
                 headers: {
                     Authorization: token,
                     accept: "application/json",
                 },
+                body: JSON.stringify({
+                    "typeLogin": "google",
+                    "notificationToken": "e0LWsA5vQZ6bQoajgtVvfz:APA91bGqhJ4BD0sdZzVPg3MRNWAtCmlTQQ9yD7xXUfwe2sczL-YW6F7dABjW_VS3RXOo8b42MIxLX_NgODo9D2w9nhpLTe5_unGm5dKbftY9NQjE-QDDVq5RI8i5Z7B7VbRBIwQqvzgw"
+                })
             };
             const response = await fetch(url, requestOptions);
             // console.log("loginAPI: ", response.status);
