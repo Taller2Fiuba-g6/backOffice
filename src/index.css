@@ -96,6 +96,16 @@ img {
     background-color: white;
 }
 
+.usuario_header {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 8px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
 .usuario_admin {
     width: 10%;
 }

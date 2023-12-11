@@ -31,9 +31,22 @@ const Usuarios = () => {
         }
     };
 
+    const Header = () => {
+        return (
+            <div className="usuario_header">
+                <div className="usuario_admin">Is Admin</div>
+                <div className="usuario_username">User Name</div>
+                <div className="usuario_description">Description</div>
+                <div className="usuario_location">Location</div>
+                <div className="div_boton"></div>
+            </div>
+        );
+    };
+
     return (
         <main className="usuarios_main">
             <section className="listado">
+                <Header />
                 {users.map((user) => {
                     return <Usuario key={user.uid} user={user} selectedUser={selectedUser} setSelectedUser={setSelectedUser} />;
                 })}
