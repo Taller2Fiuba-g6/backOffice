@@ -226,3 +226,15 @@ img {
     font-size: larger;
     font-weight: bold;
 }
+
+.charts_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 32px;
+    gap: 32px;
+}
+
+.chart_div {
+    width: 100%;
+    height: 400px;
+}

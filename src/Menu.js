@@ -19,6 +19,14 @@ const Menu = ({ setPage }) => {
                 >
                     Usuarios
                 </li>
+                <li
+                    className="menu_item"
+                    onClick={() => {
+                        setPage("usersmetrics");
+                    }}
+                >
+                    UserMetrics
+                </li>
             </ul>
         </header>
     );

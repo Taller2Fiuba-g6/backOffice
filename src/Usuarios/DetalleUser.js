@@ -10,6 +10,7 @@ const DetalleUser = ({ selectedUser }) => {
                 <picture className="detalle_user_picture">
                     <img className="detalle_user_img" src={selectedUser.profilePhoto} alt="" />
                 </picture>
+                <a href="/user.html">Métricas</a>
             </section>
         );
     }
