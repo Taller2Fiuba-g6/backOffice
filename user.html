@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                fetch("datos.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        var chartData = new google.visualization.DataTable();
+                        chartData.addColumn("string", "Fecha");
+                        chartData.addColumn("number", "Snaps");
+
+                        data.forEach((item) => {
+                            chartData.addRow([item.fecha, item.snaps]);
+                        });
+
+                        var options = {
+                            title: "SnapMsgs",
+                        };
+
+                        var chart1 = new google.visualization.ColumnChart(document.getElementById("chart_div_1"));
+                        chart1.draw(chartData, options);
+
+                        var chart2 = new google.visualization.ColumnChart(document.getElementById("chart_div_2"));
+                        chart2.draw(chartData, options);
+                    })
+                    .catch((error) => console.error("Error al obtener datos de la API:", error));
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="chart_div_1" style="width: 100%; height: 400px"></div>
+            <div id="chart_div_2" style="width: 100%; height: 400px"></div>
+        </div>
+    </body>
+</html>
