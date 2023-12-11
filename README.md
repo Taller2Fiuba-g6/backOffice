@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# SnapMsg BackOffice
 
 Deployed at [GitHub Pages](https://hhuzan.github.io/backoffice/)
