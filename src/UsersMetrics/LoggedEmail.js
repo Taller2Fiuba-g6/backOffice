@@ -2,13 +2,12 @@ import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
-const XxxMet = () => {
+const LoggedEmail = () => {
     const [data, setData] = useState();
 
-    const getXXX = async () => {
+    const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
-        // const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users";
-        const url = "./datos2.json";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/metrics/users/logged/email";
         const requestOptions = {
             method: "GET",
             headers: {
@@ -26,14 +25,27 @@ const XxxMet = () => {
     };
 
     useEffect(() => {
-        getXXX();
+        fetchData();
     }, []);
+
+    const options = {
+        title: "Usuarios Loggeados con E-mail",
+        chartArea: { width: "80%" },
+        hAxis: {
+            title: "Fecha",
+            minValue: 0,
+        },
+        vAxis: {
+            title: "Usuarios",
+        },
+        legend: "none",
+    };
 
     return (
         <div className="chart_div">
-            <Chart chartType="ColumnChart" data={data} width="100%" height="400px" legendToggle />
+            <Chart chartType="ColumnChart" data={data} options={options} width="100%" height="400px" legendToggle />
         </div>
     );
 };
 
-export default XxxMet;
+export default LoggedEmail;
