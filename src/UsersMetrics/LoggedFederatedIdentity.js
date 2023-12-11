@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 const LoggedEmail = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([[,]]);
 
     const getXXX = async () => {
         const token = await auth.currentUser.getIdToken();
