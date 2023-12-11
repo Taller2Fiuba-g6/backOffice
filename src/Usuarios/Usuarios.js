@@ -14,7 +14,7 @@ const Usuarios = () => {
     const getUsers = async () => {
         const token = await auth.currentUser.getIdToken();
         // const url = "/admin/users";
-        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users?pageNumber=0&pageCount=15&certificate=true";
         const requestOptions = {
             method: "GET",
             headers: {
@@ -25,6 +25,7 @@ const Usuarios = () => {
         try {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
+            console.log(data);
             setUsers(data);
         } catch (error) {
             console.log(error);
@@ -38,6 +39,7 @@ const Usuarios = () => {
                 <div className="usuario_username">User Name</div>
                 <div className="usuario_description">Description</div>
                 <div className="usuario_location">Location</div>
+                <div className="usuario_certified">Cert.</div>
                 <div className="div_boton"></div>
             </div>
         );

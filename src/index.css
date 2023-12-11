@@ -107,6 +107,8 @@ img {
 }
 
 .usuario_admin {
+    display: flex;
+    justify-content: center;
     width: 10%;
 }
 
@@ -116,13 +118,30 @@ img {
 }
 
 .usuario_description {
-    width: 30%;
+    width: 27%;
     text-align: left;
 }
 
 .usuario_location {
-    width: 25%;
+    width: 22%;
     text-align: left;
+}
+
+.usuario_certified {
+    display: flex;
+    width: 5%;
+    text-align: left;
+    justify-content: center;
+}
+
+.certified_done {
+    color: green;
+    font-weight: bolder;
+}
+
+.certified_pending {
+    color: red;
+    font-weight: bolder;
 }
 
 /* ==========     SNAPS     ========== */
@@ -172,6 +191,7 @@ img {
     color: red;
 }
 
+/* ==========     DETALLE USER     ========== */
 .detalle_user {
     display: flex;
     flex-direction: column;
@@ -181,10 +201,11 @@ img {
 }
 
 .detalle_user_picture {
-    width: 360px;
+    width: 300px;
 }
 
 .detalle_user_img {
+    size: 100%;
     border-radius: 50%;
 }
 
@@ -237,6 +258,7 @@ img {
     font-weight: bold;
 }
 
+/* ==========     CHARTS     ========== */
 .charts_container {
     display: grid;
     grid-template-columns: 1fr 1fr;

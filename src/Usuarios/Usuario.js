@@ -128,6 +128,26 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         }
     }
 
+    const Cert = () => {
+        if (user.certified === "done") {
+            return (
+                <div onClick={handleSelect} className="usuario_certified certified_done">
+                    V
+                </div>
+            );
+        } else {
+            if (user.certified === "pending") {
+                return (
+                    <div onClick={handleSelect} className="usuario_certified certified_pending">
+                        ?
+                    </div>
+                );
+            } else {
+                return <div onClick={handleSelect} className="usuario_certified"></div>;
+            }
+        }
+    };
+
     return (
         <div className={clase}>
             <div className="usuario_admin">
@@ -142,6 +162,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
             <div onClick={handleSelect} className="usuario_location">
                 {user.location}
             </div>
+            <Cert />
             <div className="div_boton">
                 <BotonBloqueo />
             </div>
