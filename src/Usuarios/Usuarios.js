@@ -13,8 +13,7 @@ const Usuarios = () => {
 
     const getUsers = async () => {
         const token = await auth.currentUser.getIdToken();
-        // const url = "/admin/users";
-        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users?pageNumber=0&pageCount=15&certificate=true";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users?pageNumber=0&pageCount=30&certificate=true";
         const requestOptions = {
             method: "GET",
             headers: {
@@ -25,7 +24,6 @@ const Usuarios = () => {
         try {
             const response = await fetch(url, requestOptions);
             const data = await response.json();
-            console.log(data);
             setUsers(data);
         } catch (error) {
             console.log(error);
@@ -45,6 +43,12 @@ const Usuarios = () => {
         );
     };
 
+    const Xxxx = () => {
+        if (selectedUser) {
+            return <DetalleUser selectedUser={selectedUser} />;
+        }
+    };
+
     return (
         <main className="usuarios_main">
             <section className="listado">
@@ -53,7 +57,7 @@ const Usuarios = () => {
                     return <Usuario key={user.uid} user={user} selectedUser={selectedUser} setSelectedUser={setSelectedUser} />;
                 })}
             </section>
-            <DetalleUser selectedUser={selectedUser} />
+            <Xxxx />
         </main>
     );
 };

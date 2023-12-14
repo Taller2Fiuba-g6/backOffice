@@ -135,13 +135,21 @@ img {
 }
 
 .certified_done {
-    color: green;
+    color: blue;
     font-weight: bolder;
 }
 
 .certified_pending {
     color: red;
     font-weight: bolder;
+}
+
+.certificado {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    align-items: center;
+    padding: 10px;
 }
 
 /* ==========     SNAPS     ========== */
@@ -207,6 +215,14 @@ img {
 .detalle_user_img {
     size: 100%;
     border-radius: 50%;
+}
+
+.certified_picture {
+    width: 300px;
+}
+
+.certified_img {
+    size: 100%;
 }
 
 /* ==========     DETALLE SNAPS     ========== */

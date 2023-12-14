@@ -139,7 +139,7 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
             if (user.certified === "pending") {
                 return (
                     <div onClick={handleSelect} className="usuario_certified certified_pending">
-                        ?
+                        ...
                     </div>
                 );
             } else {
