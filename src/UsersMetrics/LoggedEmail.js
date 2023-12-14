@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 const LoggedEmail = () => {
-    const [data, setData] = useState([[,]]);
+    const [data, setData] = useState([
+        ["_", "_", "_"],
+        ["", 0, 0],
+    ]);
 
     const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
@@ -29,8 +32,9 @@ const LoggedEmail = () => {
     }, []);
 
     const options = {
-        title: "Usuarios Loggeados con E-mail",
+        title: "Usuarios Loggeados/Fallidos con E-mail",
         chartArea: { width: "80%" },
+        colors: ["darkslateblue", "firebrick"],
         hAxis: {
             title: "Fecha",
             minValue: 0,
@@ -39,6 +43,9 @@ const LoggedEmail = () => {
             title: "Usuarios",
         },
         legend: "none",
+        hAxis: {
+            direction: -1,
+        },
     };
 
     return (

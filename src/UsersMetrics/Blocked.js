@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 const Blocked = () => {
-    const [data, setData] = useState([[,]]);
+    const [data, setData] = useState([
+        ["_", "_"],
+        ["", 0],
+    ]);
 
     const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
@@ -40,6 +43,9 @@ const Blocked = () => {
             title: "Usuarios",
         },
         legend: "none",
+        hAxis: {
+            direction: -1,
+        },
     };
 
     return (

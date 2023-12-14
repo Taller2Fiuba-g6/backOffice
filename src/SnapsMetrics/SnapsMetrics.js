@@ -1,10 +1,12 @@
-import Xxxx from "./Xxxx";
+import Hashtags from "./Hashtags";
+import NewSnaps from "./NewSnaps";
 
 const SnapsMetrics = () => {
     return (
         <main>
             <div className="charts_container">
-                <Xxxx />
+                <NewSnaps />
+                <Hashtags />
             </div>
         </main>
     );

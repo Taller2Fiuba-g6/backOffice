@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
 const RegisteredEmail = () => {
-    const [data, setData] = useState([[,]]);
+    const [data, setData] = useState([
+        ["_", "_", "_"],
+        ["", 0, 0],
+    ]);
 
     const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
@@ -29,9 +32,9 @@ const RegisteredEmail = () => {
     }, []);
 
     const options = {
-        title: "Usuarios Registrados con E-mail",
+        title: "Usuarios Registrados/Fallidos con E-mail",
         chartArea: { width: "80%" },
-        colors: ["green"],
+        colors: ["green", "firebrick"],
         hAxis: {
             title: "Fecha",
             minValue: 0,
@@ -40,6 +43,9 @@ const RegisteredEmail = () => {
             title: "Usuarios",
         },
         legend: "none",
+        hAxis: {
+            direction: -1,
+        },
     };
 
     return (

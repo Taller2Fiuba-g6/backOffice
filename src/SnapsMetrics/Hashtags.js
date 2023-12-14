@@ -2,13 +2,15 @@ import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
-const Xxxx = () => {
-    const [data, setData] = useState([[,]]);
+const Hashtags = () => {
+    const [data, setData] = useState([
+        ["_", "_"],
+        ["", 0],
+    ]);
 
     const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
-        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/metrics/users/logged/email";
-        // const url = "/datos.json";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/metrics/snaps/hashtags";
         const requestOptions = {
             method: "GET",
             headers: {
@@ -30,15 +32,15 @@ const Xxxx = () => {
     }, []);
 
     const options = {
-        title: "Xxxx por Día",
+        title: "Histórico de Hashtags",
         chartArea: { width: "80%" },
-        colors: ["orange"],
+        colors: ["blueviolet"],
         hAxis: {
-            title: "Fecha",
+            title: "Hashtag",
             minValue: 0,
         },
         vAxis: {
-            title: "SnapMsgs",
+            title: "Cantidad",
         },
         legend: "none",
     };
@@ -50,4 +52,4 @@ const Xxxx = () => {
     );
 };
 
-export default Xxxx;
+export default Hashtags;

@@ -2,15 +2,15 @@ import { Chart } from "react-google-charts";
 import { useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 
-const RegisteredFederatedIdentity = () => {
+const NewSnaps = () => {
     const [data, setData] = useState([
-        ["_", "_", "_"],
-        ["", 0, 0],
+        ["_", "_"],
+        ["", 0],
     ]);
 
     const fetchData = async () => {
         const token = await auth.currentUser.getIdToken();
-        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/metrics/users/registered/federated-identity";
+        const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/metrics/snaps/new-snaps";
         const requestOptions = {
             method: "GET",
             headers: {
@@ -32,15 +32,15 @@ const RegisteredFederatedIdentity = () => {
     }, []);
 
     const options = {
-        title: "Usuarios Registrados/Fallidos con Identidad Federada",
+        title: "Nuevos Snaps por Día",
         chartArea: { width: "80%" },
-        colors: ["green", "FireBrick"],
+        colors: ["orange"],
         hAxis: {
             title: "Fecha",
             minValue: 0,
         },
         vAxis: {
-            title: "Usuarios",
+            title: "SnapMsgs",
         },
         legend: "none",
         hAxis: {
@@ -55,4 +55,4 @@ const RegisteredFederatedIdentity = () => {
     );
 };
 
-export default RegisteredFederatedIdentity;
+export default NewSnaps;
