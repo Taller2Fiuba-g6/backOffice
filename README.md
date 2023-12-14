@@ -30,9 +30,11 @@ Deployed at [GitHub Pages](https://taller2fiuba-g6.github.io/backOffice/)
     -   Descripción Ingresada por el Usuario.
     -   Locación Ingresada por el Usuario.
     -   Permite bloquearlo.
+    -   Permite Aprovar/Revocar certificaciones Solicitadas.
 -   En la pestaña secundaria se Muestran:
     -   Foto de Pantalla de Usuario.
     -   Foto de Perfil.
+    -   Texto e Imagen aportada para Certificación.
 
 ![Pantalla Administración de Usaurios](images/3.png)
 
@@ -40,9 +42,18 @@ Deployed at [GitHub Pages](https://taller2fiuba-g6.github.io/backOffice/)
 
 -   Informa Métricas sumarizadas por día para:
     -   Usuarios Registrados usando Email/Password.
+    -   Intentos Fallidos de Registro usando Email/Password.
     -   usuarios Registrados mediante "Identidad Federada" (google).
-    -   Logins de Usuarios usando Email/Password.
-    -   Logins de Usuarios usando "Identidad Federada"
+    -   Intentos Fallidos de Registro mediante "Identidad Federada" (google).
+    -   Logins/Fallidos de Usuarios usando Email/Password.
+    -   Logins/Fallidos de Usuarios usando "Identidad Federada"
     -   Usuarios bloquedos por un Administrador durante el Día.
 
 ![Pantalla Métricas de Usuario](images/4.png)
+
+Metrics de Contenido
+
+-   Métricas sumarizadas por día de SnapMsgs publicados
+-   Historico de Hashtagags.
+
+![Pantalla Métricas de Usuario](images/5.png)
