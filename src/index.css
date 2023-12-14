@@ -49,14 +49,9 @@ img {
     height: 600px;
 }
 
-.div_boton {
-    width: 10%;
-}
-
 .boton {
     background-color: #282c34;
     color: white;
-    width: 80%;
     border: none;
 }
 
@@ -82,14 +77,13 @@ img {
 /* ==========     USUARIO     ========== */
 .usuarios_main {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 1fr;
 }
 
 .usuario {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 3fr 5fr 5fr 2fr 2fr;
     padding: 4px 8px;
-    align-items: center;
 }
 
 .usuario:nth-child(even) {
@@ -97,8 +91,8 @@ img {
 }
 
 .usuario_header {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 3fr 5fr 5fr 2fr 2fr;
     padding: 4px 8px;
     align-items: center;
     background-color: black;
@@ -106,42 +100,19 @@ img {
     font-weight: bold;
 }
 
-.usuario_admin {
-    display: flex;
-    justify-content: center;
-    width: 10%;
-}
-
 .usuario_username {
-    width: 25%;
+    display: flex;
     text-align: left;
 }
 
 .usuario_description {
-    width: 27%;
+    display: flex;
+    width: 3fr;
     text-align: left;
 }
 
 .usuario_location {
-    width: 22%;
     text-align: left;
-}
-
-.usuario_certified {
-    display: flex;
-    width: 5%;
-    text-align: left;
-    justify-content: center;
-}
-
-.certified_done {
-    color: blue;
-    font-weight: bolder;
-}
-
-.certified_pending {
-    color: red;
-    font-weight: bolder;
 }
 
 .certificado {
@@ -155,12 +126,12 @@ img {
 /* ==========     SNAPS     ========== */
 .snaps_main {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 1fr;
 }
 
 .snap {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 3fr 3fr 5fr 1fr 2fr;
     padding: 4px 8px;
     align-items: center;
 }
@@ -177,24 +148,20 @@ img {
 }
 
 .snap_datetime {
-    width: 18%;
     text-align: left;
 }
 
 .snap_username {
-    width: 20%;
     text-align: left;
 }
 
 .snap_msgtext {
     color: black;
     font-weight: normal;
-    width: 47%;
     text-align: left;
 }
 
 .snap_lbl_img {
-    width: 5%;
     font-weight: bold;
     color: red;
 }

@@ -4,6 +4,7 @@ import { auth } from "../firebaseConfig";
 const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const [isAdmin, setIsAdmin] = useState(user.is_admin);
     const [blocked, setBlocked] = useState(user.is_blocked);
+    const [certified, setCertified] = useState(user.certified);
 
     const handleSelect = () => {
         setSelectedUser(user);
@@ -12,7 +13,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const setAdmin = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            // const url = "/admin/" + user.uid;
             const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
@@ -34,7 +34,6 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
     const bloquear = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            // const url = "/admin/users/" + user.uid;
             const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/users/" + user.uid;
             const response = await fetch(url, {
                 method: "POST",
@@ -97,6 +96,46 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         }
     };
 
+    const handleAprobar = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/certify/users?user_id=" + selectedUser.uid;
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            if (response.ok) {
+                setCertified("done");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleRevocar = async () => {
+        try {
+            const token = await auth.currentUser.getIdToken();
+            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/certify/users?user_id=" + selectedUser.uid;
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+            });
+            if (response.ok) {
+                setCertified(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const AdminBox = () => {
         if (isAdmin) {
             return <input onChange={unsetAdmin} id={user.uid} type="checkbox" defaultChecked />;
@@ -121,6 +160,24 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         }
     };
 
+    const BotonCertificar = () => {
+        if (certified === "done") {
+            return (
+                <button className="boton bloqueado" onClick={handleRevocar}>
+                    Revocar
+                </button>
+            );
+        } else {
+            if (certified === "pending") {
+                return (
+                    <button className="boton" onClick={handleAprobar}>
+                        Certificar
+                    </button>
+                );
+            }
+        }
+    };
+
     let clase = "usuario";
     if (typeof selectedUser !== "undefined") {
         if (user.uid === selectedUser.uid) {
@@ -128,29 +185,9 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
         }
     }
 
-    const Cert = () => {
-        if (user.certified === "done") {
-            return (
-                <div onClick={handleSelect} className="usuario_certified certified_done">
-                    V
-                </div>
-            );
-        } else {
-            if (user.certified === "pending") {
-                return (
-                    <div onClick={handleSelect} className="usuario_certified certified_pending">
-                        ...
-                    </div>
-                );
-            } else {
-                return <div onClick={handleSelect} className="usuario_certified"></div>;
-            }
-        }
-    };
-
     return (
         <div className={clase}>
-            <div className="usuario_admin">
+            <div>
                 <AdminBox />
             </div>
             <div onClick={handleSelect} className="usuario_username">
@@ -162,8 +199,10 @@ const Usuario = ({ user, selectedUser, setSelectedUser }) => {
             <div onClick={handleSelect} className="usuario_location">
                 {user.location}
             </div>
-            <Cert />
-            <div className="div_boton">
+            <div>
+                <BotonCertificar />
+            </div>
+            <div>
                 <BotonBloqueo />
             </div>
         </div>

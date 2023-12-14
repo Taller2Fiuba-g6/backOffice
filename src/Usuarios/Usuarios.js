@@ -33,12 +33,12 @@ const Usuarios = () => {
     const Header = () => {
         return (
             <div className="usuario_header">
-                <div className="usuario_admin">Is Admin</div>
-                <div className="usuario_username">User Name</div>
-                <div className="usuario_description">Description</div>
-                <div className="usuario_location">Location</div>
-                <div className="usuario_certified">Cert.</div>
-                <div className="div_boton"></div>
+                <div>Is Admin</div>
+                <div>User Name</div>
+                <div>Description</div>
+                <div>Location</div>
+                <div>Cert.</div>
+                <div></div>
             </div>
         );
     };

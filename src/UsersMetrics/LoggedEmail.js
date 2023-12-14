@@ -38,14 +38,12 @@ const LoggedEmail = () => {
         hAxis: {
             title: "Fecha",
             minValue: 0,
+            direction: -1,
         },
         vAxis: {
             title: "Usuarios",
         },
         legend: "none",
-        hAxis: {
-            direction: -1,
-        },
     };
 
     return (

@@ -1,58 +1,4 @@
-import { useState } from "react";
-import { auth } from "../firebaseConfig";
-
 const DetalleUser = ({ selectedUser }) => {
-    const [certified, setCertified] = useState(selectedUser.certified);
-
-    const handleAprobar = async () => {
-        try {
-            const token = await auth.currentUser.getIdToken();
-            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/certify/users?user_id=" + selectedUser.uid;
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    Authorization: token,
-                },
-            });
-            if (response.ok) {
-                setCertified("done");
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const handleRevocar = async () => {
-        try {
-            const token = await auth.currentUser.getIdToken();
-            const url = "https://snap-middle-end-qjub62maia-wl.a.run.app/admin/certify/users?user_id=" + selectedUser.uid;
-            const response = await fetch(url, {
-                method: "DELETE",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    Authorization: token,
-                },
-            });
-            if (response.ok) {
-                setCertified(false);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const AprobCert = () => {
-        if (certified === "pending") {
-            return <button onClick={handleAprobar}>Aprobar</button>;
-        }
-        if (certified === "done") {
-            return <button onClick={handleRevocar}>Revocar</button>;
-        }
-    };
-
     const Cert = () => {
         if (selectedUser.certified) {
             return (
@@ -62,7 +8,6 @@ const DetalleUser = ({ selectedUser }) => {
                     <picture className="certified_picture">
                         <img className="certified_img" src={selectedUser.documents[0]} alt="" />
                     </picture>
-                    <AprobCert />
                 </div>
             );
         }
